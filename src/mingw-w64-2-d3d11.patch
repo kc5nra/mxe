@@ -1,0 +1,18 @@
+--- mingw-w64-v4.0-rc2-original/mingw-w64-headers/direct-x/include/d3d11.idl	2015-02-07 01:33:22.000000000 -0600
++++ mingw-w64-v4.0-rc2/mingw-w64-headers/direct-x/include/d3d11.idl	2015-02-13 11:15:35.119813689 -0600
+@@ -1,6 +1,7 @@
+ /*
+  * Copyright 2010 Rico Schüller
+  * Copyright 2013 Austin English
++ * Copyright 2015 Martell Malone
+  *
+  * This library is free software; you can redistribute it and/or
+  * modify it under the terms of the GNU Lesser General Public
+@@ -2134,3 +2135,7 @@
+ cpp_quote("typedef HRESULT (WINAPI *PFN_D3D11_CREATE_DEVICE_AND_SWAP_CHAIN)(IDXGIAdapter*,D3D_DRIVER_TYPE,HMODULE,UINT,")
+ cpp_quote("    const D3D_FEATURE_LEVEL*,UINT,UINT,const DXGI_SWAP_CHAIN_DESC*,IDXGISwapChain**,ID3D11Device**,")
+ cpp_quote("    D3D_FEATURE_LEVEL*,ID3D11DeviceContext**);")
++
++cpp_quote("HRESULT WINAPI D3D11CreateDeviceAndSwapChain(IDXGIAdapter*,D3D_DRIVER_TYPE,HMODULE,UINT,")
++cpp_quote("    const D3D_FEATURE_LEVEL*,UINT,UINT,const DXGI_SWAP_CHAIN_DESC*,IDXGISwapChain**,ID3D11Device**,")
++cpp_quote("    D3D_FEATURE_LEVEL*,ID3D11DeviceContext**);")
