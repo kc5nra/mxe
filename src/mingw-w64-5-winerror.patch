@@ -1,0 +1,12 @@
+--- mingw-w64-v4.0-rc2-original/mingw-w64-headers/include/winerror.h	2015-02-13 13:30:21.603872296 -0600
++++ mingw-w64-v4.0-rc2/mingw-w64-headers/include/winerror.h	2015-02-13 13:30:40.951872437 -0600
+@@ -3540,6 +3540,9 @@
+ #define NAP_E_SHV_CONFIG_NOT_FOUND      _HRESULT_TYPEDEF_(0x80270012)
+ #define NAP_E_SHV_TIMEOUT               _HRESULT_TYPEDEF_(0x80270013)
+
++#define DXGI_ERROR_ACCESS_LOST          _HRESULT_TYPEDEF_(0x887A0026L) 
++#define DXGI_ERROR_WAIT_TIMEOUT         _HRESULT_TYPEDEF_(0x887A0027L)
++
+ #include <fltwinerror.h>
+ 
+ #undef __IN__WINERROR_
