@@ -26,7 +26,9 @@ define $(PKG)_BUILD_mingw-w64
         --prefix='$(PREFIX)/$(TARGET)' \
         --enable-sdk=all \
         --enable-secure-api \
-        --enable-idl
+        --enable-idl \
+        --with-widl
+
     $(MAKE) -C '$(1).headers-build' install
 endef
 
