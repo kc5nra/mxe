@@ -9,7 +9,7 @@ $(PKG)_SUBDIR   := $(PKG)-$($(PKG)_VERSION)
 $(PKG)_FILE     := $(PKG)-$($(PKG)_VERSION).tar.bz2
 $(PKG)_URL      := http://www.ffmpeg.org/releases/$($(PKG)_FILE)
 $(PKG)_URL_2    := http://launchpad.net/ffmpeg/$(call SHORT_PKG_VERSION,$(PKG))/$($(PKG)_VERSION)/+download/$($(PKG)_FILE)
-$(PKG)_DEPS     := gcc bzip2 gnutls lame libass libbluray libbs2b libcaca \
+$(PKG)_DEPS     := gcc bzip2 gnutls lame \
                    libvpx opencore-amr opus sdl speex theora vidstab \
                    vo-aacenc vo-amrwbenc vorbis x264 xvidcore yasm zlib
 
@@ -48,10 +48,6 @@ define $(PKG)_BUILD
         --extra-libs='-mconsole' \
         --enable-avisynth \
         --enable-gnutls \
-        --enable-libass \
-        --enable-libbluray \
-        --enable-libbs2b \
-        --enable-libcaca \
         --enable-libmp3lame \
         --enable-libopencore-amrnb \
         --enable-libopencore-amrwb \
