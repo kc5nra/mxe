@@ -8,7 +8,7 @@ $(PKG)_CHECKSUM := 2e3d32f32e36a92782ca66c260940824746900bd
 $(PKG)_SUBDIR   := $(PKG)-opensource-src-$($(PKG)_VERSION)
 $(PKG)_FILE     := $(PKG)-opensource-src-$($(PKG)_VERSION).tar.xz
 $(PKG)_URL      := http://download.qt-project.org/official_releases/qt/5.4/$($(PKG)_VERSION)/submodules/$($(PKG)_FILE)
-$(PKG)_DEPS     := gcc postgresql freetds openssl harfbuzz zlib libpng jpeg sqlite pcre fontconfig freetype dbus icu4c
+$(PKG)_DEPS     := gcc 
 
 define $(PKG)_UPDATE
     $(WGET) -q -O- http://download.qt-project.org/official_releases/qt/5.1/ | \
@@ -19,40 +19,49 @@ endef
 
 define $(PKG)_BUILD
     cd '$(1)' && \
-        OPENSSL_LIBS="`'$(TARGET)-pkg-config' --libs-only-l openssl`" \
-        PSQL_LIBS="-lpq -lsecur32 `'$(TARGET)-pkg-config' --libs-only-l openssl` -lws2_32" \
-        SYBASE_LIBS="-lsybdb `'$(TARGET)-pkg-config' --libs-only-l gnutls` -liconv -lws2_32" \
         ./configure \
+            -DQT_NO_SESSIONMANAGER \
             -opensource \
             -confirm-license \
             -xplatform win32-g++ \
             -device-option CROSS_COMPILE=${TARGET}- \
             -device-option PKG_CONFIG='${TARGET}-pkg-config' \
             -force-pkg-config \
+            -prefix '$(PREFIX)/$(TARGET)/qt5' \
             -release \
             -static \
-            -prefix '$(PREFIX)/$(TARGET)/qt5' \
-            -icu \
-            -opengl desktop \
-            -no-glib \
-            -accessibility \
             -nomake examples \
             -nomake tests \
+            -no-compile-examples \
+            -no-feature-style-plastique \
+            -no-feature-style-cleanlooks \
+            -no-feature-style-motif \
+            -no-feature-style-cde \
+            -no-feature-style-windowsce \
+            -no-feature-style-windowsmobile \
+            -no-feature-style-s60 \
+            -opengl desktop \
+            -qt-pcre \
+            -qt-zlib \
+            -no-dbus \
+            -no-freetype \
+            -no-glib \
+            -no-icu \
+            -no-harfbuzz \
+            -no-nis \
+            -no-opengl \
+            -no-openssl \
+            -no-pch \
+            -no-qml-debug \
+            -no-sm \
             -no-sql-mysql \
-            -plugin-sql-sqlite \
-            -plugin-sql-odbc \
-            -plugin-sql-psql \
-            -plugin-sql-tds -D Q_USE_SYBASE \
-            -system-zlib \
-            -system-libpng \
-            -system-libjpeg \
-            -system-sqlite \
-            -fontconfig \
-            -system-freetype \
-            -system-harfbuzz \
-            -system-pcre \
-            -openssl-linked \
-            -dbus-linked \
+            -no-sql-odbc \
+            -no-sql-psql \
+            -no-sql-sqlite \
+            -no-sql-tds \
+            -no-gif \
+            -no-libpng \
+            -no-libjpeg \
             -v
 
     # invoke qmake with removed debug options as a workaround for
