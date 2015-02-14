@@ -36,7 +36,7 @@ define $(PKG)_CONFIGURE
         --disable-multilib \
         --without-x \
         --disable-win32-registry \
-        --enable-threads=win32 \
+        --enable-threads=posix \
         --disable-libgomp \
         --with-cloog='$(PREFIX)' \
         --with-gmp='$(PREFIX)' \
