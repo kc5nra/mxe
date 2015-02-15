@@ -1,0 +1,198 @@
+From e136afd8cc2fc31ccdf39bf7fb41dd162c65b3ca Mon Sep 17 00:00:00 2001
+From: Martell Malone <martellmalone@gmail.com>
+Date: Sat, 14 Feb 2015 20:22:06 +0000
+Subject: [PATCH] add support for uuidof in ksproxy and bdaiface
+
+---
+ mingw-w64-headers/include/bdaiface.h |  8 +++++
+ mingw-w64-headers/include/ksproxy.h  | 64 ++++++++++++++++++++++++++++++++++++
+ 2 files changed, 72 insertions(+)
+
+diff --git a/mingw-w64-headers/include/bdaiface.h b/mingw-w64-headers/include/bdaiface.h
+index b089106..6df4530 100644
+--- a/mingw-w64-headers/include/bdaiface.h
++++ b/mingw-w64-headers/include/bdaiface.h
+@@ -22,6 +22,10 @@ typedef interface IEnumPIDMap IEnumPIDMap;
+ typedef interface IMPEG2PIDMap IMPEG2PIDMap;
+ #endif
+ 
++#ifdef __CRT_UUID_DECL
++__CRT_UUID_DECL(IEnumPIDMap,0xafb6c2a2,0x2c41,0x11d3,0x8a,0x60,0x00,0x00,0xf8,0x1e,0x0e,0x4a);
++#endif
++
+ #undef  INTERFACE
+ #define INTERFACE IEnumPIDMap
+ DECLARE_INTERFACE_(IEnumPIDMap,IUnknown)
+@@ -50,6 +54,10 @@ DECLARE_INTERFACE_(IEnumPIDMap,IUnknown)
+ #define IEnumPIDMap_Clone(This,pIEnumPIDMap) (This)->lpVtbl->Clone(This,pIEnumPIDMap)
+ #endif /*COBJMACROS*/
+ 
++#ifdef __CRT_UUID_DECL
++__CRT_UUID_DECL(IMPEG2PIDMap,0xafb6c2a1,0x2c41,0x11d3,0x8a,0x60,0x00,0x00,0xf8,0x1e,0x0e,0x4a);
++#endif
++
+ #undef  INTERFACE
+ #define INTERFACE IMPEG2PIDMap
+ DECLARE_INTERFACE_(IMPEG2PIDMap,IUnknown)
+diff --git a/mingw-w64-headers/include/ksproxy.h b/mingw-w64-headers/include/ksproxy.h
+index a10ab99..9e34525 100644
+--- a/mingw-w64-headers/include/ksproxy.h
++++ b/mingw-w64-headers/include/ksproxy.h
+@@ -219,6 +219,11 @@ typedef ALLOCATOR_PROPERTIES_EX *PALLOCATOR_PROPERTIES_EX;
+ #ifdef __STREAMS__
+ 
+ struct IKsClockPropertySet;
++
++#ifdef __CRT_UUID_DECL
++__CRT_UUID_DECL(IKsClockPropertySet,0x5c5cbd84,0xe755,0x11d0,0xac,0x18,0x00,0xa0,0xc9,0x22,0x31,0x96);
++#endif
++
+ #undef INTERFACE
+ #define INTERFACE IKsClockPropertySet
+ DECLARE_INTERFACE_(IKsClockPropertySet,IUnknown)
+@@ -256,6 +261,11 @@ DECLARE_INTERFACE_(IKsClockPropertySet,IUnknown)
+ };
+ 
+ struct IKsAllocator;
++
++#ifdef __CRT_UUID_DECL
++__CRT_UUID_DECL(IKsAllocator,0x8da64899,0xc0d9,0x11d0,0x84,0x13,0x00,0x00,0xf8,0x22,0xfe,0x8a);
++#endif
++
+ #undef INTERFACE
+ #define INTERFACE IKsAllocator
+ DECLARE_INTERFACE_(IKsAllocator,IUnknown)
+@@ -271,6 +281,11 @@ DECLARE_INTERFACE_(IKsAllocator,IUnknown)
+ };
+ 
+ struct IKsAllocatorEx;
++
++#ifdef __CRT_UUID_DECL
++__CRT_UUID_DECL(IKsAllocatorEx,0x091bb63a,0x603f,0x11d1,0xb0,0x67,0x00,0xa0,0xc9,0x06,0x28,0x02);
++#endif
++
+ #undef INTERFACE
+ #define INTERFACE IKsAllocatorEx
+ DECLARE_INTERFACE_(IKsAllocatorEx,IKsAllocator)
+@@ -295,6 +310,10 @@ typedef enum {
+ typedef struct _KSSTREAM_SEGMENT *PKSSTREAM_SEGMENT;
+ struct IKsPin;
+ 
++#ifdef __CRT_UUID_DECL
++__CRT_UUID_DECL(IKsPin,0xb61178d1,0xa2d9,0x11cf,0x9e,0x53,0x00,0xaa,0x00,0xa2,0x16,0xa1);
++#endif
++
+ #undef INTERFACE
+ #define INTERFACE IKsPin
+ DECLARE_INTERFACE_(IKsPin,IUnknown)
+@@ -338,6 +357,11 @@ DECLARE_INTERFACE_(IKsPin,IUnknown)
+ };
+ 
+ struct IKsPinEx;
++
++#ifdef __CRT_UUID_DECL
++__CRT_UUID_DECL(IKsPinEx,0x7bb38260,0xd19c,0x11d2,0xb3,0x8a,0x00,0xa0,0xc9,0x5e,0xc2,0x2e);
++#endif
++
+ #undef INTERFACE
+ #define INTERFACE IKsPinEx
+ DECLARE_INTERFACE_(IKsPinEx,IKsPin)
+@@ -349,6 +373,11 @@ DECLARE_INTERFACE_(IKsPinEx,IKsPin)
+ };
+ 
+ struct IKsPinPipe;
++
++#ifdef __CRT_UUID_DECL
++__CRT_UUID_DECL(IKsPinPipe,0xe539cd90,0xa8b4,0x11d1,0x81,0x89,0x00,0xa0,0xc9,0x06,0x28,0x02);
++#endif
++
+ #undef INTERFACE
+ #define INTERFACE IKsPinPipe
+ DECLARE_INTERFACE_(IKsPinPipe,IUnknown)
+@@ -383,6 +412,11 @@ DECLARE_INTERFACE_(IKsPinPipe,IUnknown)
+ };
+ 
+ struct IKsPinFactory;
++
++#ifdef __CRT_UUID_DECL
++__CRT_UUID_DECL(IKsPinFactory,0xcd5ebe6b,0x8b6e,0x11d1,0x8a,0xe0,0x00,0xa0,0xc9,0x22,0x31,0x96);
++#endif
++
+ #undef INTERFACE
+ #define INTERFACE IKsPinFactory
+ DECLARE_INTERFACE_(IKsPinFactory,IUnknown)
+@@ -398,6 +432,11 @@ typedef enum {
+ } KSIOOPERATION;
+ 
+ struct IKsDataTypeHandler;
++
++#ifdef __CRT_UUID_DECL
++__CRT_UUID_DECL(IKsDataTypeHandler,0x5ffbaa02,0x49a3,0x11d0,0x9f,0x36,0x00,0xaa,0x00,0xa2,0x16,0xa1);
++#endif
++
+ #undef INTERFACE
+ #define INTERFACE IKsDataTypeHandler
+ DECLARE_INTERFACE_(IKsDataTypeHandler,IUnknown)
+@@ -425,6 +464,11 @@ DECLARE_INTERFACE_(IKsDataTypeHandler,IUnknown)
+ };
+ 
+ struct IKsDataTypeCompletion;
++
++#ifdef __CRT_UUID_DECL
++__CRT_UUID_DECL(IKsDataTypeCompletion,0x827d1a0e,0x0f73,0x11d2,0xb2,0x7a,0x00,0xa0,0xc9,0x22,0x31,0x96);
++#endif
++
+ #undef INTERFACE
+ #define INTERFACE IKsDataTypeCompletion
+ DECLARE_INTERFACE_(IKsDataTypeCompletion,IUnknown)
+@@ -437,6 +481,11 @@ DECLARE_INTERFACE_(IKsDataTypeCompletion,IUnknown)
+ };
+ 
+ struct IKsInterfaceHandler;
++
++#ifdef __CRT_UUID_DECL
++__CRT_UUID_DECL(IKsInterfaceHandler,0xd3abc7e0,0x9a61,0x11d0,0xa4,0x0d,0x00,0xa0,0xc9,0x22,0x31,0x96);
++#endif
++
+ #undef INTERFACE
+ #define INTERFACE IKsInterfaceHandler
+ DECLARE_INTERFACE_(IKsInterfaceHandler,IUnknown)
+@@ -464,6 +513,11 @@ typedef struct _KSSTREAM_SEGMENT {
+ } KSSTREAM_SEGMENT;
+ 
+ struct IKsObject;
++
++#ifdef __CRT_UUID_DECL
++__CRT_UUID_DECL(IKsObject,0x423c13a2,0x2070,0x11d0,0x9e,0xf7,0x00,0xaa,0x00,0xa2,0x16,0xa1);
++#endif
++
+ #undef INTERFACE
+ #define INTERFACE IKsObject
+ DECLARE_INTERFACE_(IKsObject,IUnknown)
+@@ -472,6 +526,11 @@ DECLARE_INTERFACE_(IKsObject,IUnknown)
+ };
+ 
+ struct IKsQualityForwarder;
++
++#ifdef __CRT_UUID_DECL
++__CRT_UUID_DECL(IKsQualityForwarder,0x97ebaacb,0x95bd,0x11d0,0xa3,0xea,0x00,0xa0,0xc9,0x22,0x31,0x96);
++#endif
++
+ #undef INTERFACE
+ #define INTERFACE IKsQualityForwarder
+ DECLARE_INTERFACE_(IKsQualityForwarder,IKsObject)
+@@ -482,6 +541,11 @@ DECLARE_INTERFACE_(IKsQualityForwarder,IKsObject)
+ };
+ 
+ struct IKsNotifyEvent;
++
++#ifdef __CRT_UUID_DECL
++__CRT_UUID_DECL(IKsNotifyEvent,0x412bd695,0xf84b,0x46c1,0xac,0x73,0x54,0x19,0x6d,0xbc,0x8f,0xa7);
++#endif
++
+ #undef INTERFACE
+ #define INTERFACE IKsNotifyEvent
+ DECLARE_INTERFACE_(IKsNotifyEvent,IUnknown)
+-- 
+2.3.0
+
