@@ -29,13 +29,7 @@ define $(PKG)_BUILD_mingw-w64
         --enable-idl \
         --with-widl
 
-#    $(MAKE) -C '$(1).headers-build' install
-#    cd ..
-#    mkdir '$(1).crt-build'
-#    cd '$(1).crt-build' && '$(1)/mingw-w64-crt/configure' \
-#        --host='$(TARGET)' \
-#        --prefix='$(PREFIX)/$(TARGET)'
-
+    $(MAKE) -C '$(1).headers-build' install
    
 endef
 
