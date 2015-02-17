@@ -3,21 +3,14 @@
 
 PKG             := mingw-w64
 $(PKG)_IGNORE   :=
-$(PKG)_VERSION  := 4.0-rc2
-$(PKG)_CHECKSUM := 6f046e495d5eac0560e7585c58cb801d932e85fa
-$(PKG)_SUBDIR   := $(PKG)-v$($(PKG)_VERSION)
-$(PKG)_FILE     := $(PKG)-v$($(PKG)_VERSION).tar.bz2
-$(PKG)_URL      := http://$(SOURCEFORGE_MIRROR)/project/$(PKG)/$(PKG)/$(PKG)-release/$($(PKG)_FILE)
+$(PKG)_VERSION  := 4fd76bd
+$(PKG)_CHECKSUM := 85e47e3ef27e1cee918e51846d4477a61332d308
+$(PKG)_SUBDIR   := mirror-$(PKG)-$($(PKG)_VERSION)
+$(PKG)_FILE     := $(PKG)-$($(PKG)_VERSION).tar.gz
+$(PKG)_URL      := https://github.com/mirror/$(PKG)/tarball/$($(PKG)_VERSION)/$($(PKG)_FILE)
 $(PKG)_DEPS     := widl
 
-define $(PKG)_UPDATE
-    git ls-remote --tags git://git.code.sf.net/p/mingw-w64/mingw-w64 | \
-    cut -d '/' -f 3 | \
-    cut -d '^' -f 1 | \
-    cut -c 2- | \
-    $(SORT) -V | \
-    tail -1
-endef
+$(PKG)_UPDATE = $(call MXE_GET_GITHUB_SHA, mirror/mingw-w64, master)
 
 define $(PKG)_BUILD_mingw-w64
     mkdir '$(1).headers-build'
