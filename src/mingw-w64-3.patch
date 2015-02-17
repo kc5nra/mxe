@@ -1,0 +1,43 @@
+From f7c85b195c2bf512303e4dbb0d09f37f27dcb8e9 Mon Sep 17 00:00:00 2001
+From: Martell Malone <martellmalone@gmail.com>
+Date: Sat, 14 Feb 2015 13:02:47 +0000
+Subject: [PATCH] add missing uuid for IKsPin and IMPEG2PIDMap
+
+---
+ mingw-w64-headers/include/bdaiface.h | 4 ++++
+ mingw-w64-headers/include/ksproxy.h  | 4 ++++
+ 2 files changed, 8 insertions(+)
+
+diff --git a/mingw-w64-headers/include/bdaiface.h b/mingw-w64-headers/include/bdaiface.h
+index b089106..3550e22 100644
+--- a/mingw-w64-headers/include/bdaiface.h
++++ b/mingw-w64-headers/include/bdaiface.h
+@@ -50,6 +50,10 @@ DECLARE_INTERFACE_(IEnumPIDMap,IUnknown)
+ #define IEnumPIDMap_Clone(This,pIEnumPIDMap) (This)->lpVtbl->Clone(This,pIEnumPIDMap)
+ #endif /*COBJMACROS*/
+ 
++#ifdef __CRT_UUID_DECL
++__CRT_UUID_DECL(IMPEG2PIDMap,0xafb6c2a1,0x2c41,0x11d3,0x8a,0x60,0x00,0x00,0xf8,0x1e,0x0e,0x4a);
++#endif
++
+ #undef  INTERFACE
+ #define INTERFACE IMPEG2PIDMap
+ DECLARE_INTERFACE_(IMPEG2PIDMap,IUnknown)
+diff --git a/mingw-w64-headers/include/ksproxy.h b/mingw-w64-headers/include/ksproxy.h
+index a10ab99..7b2036f 100644
+--- a/mingw-w64-headers/include/ksproxy.h
++++ b/mingw-w64-headers/include/ksproxy.h
+@@ -295,6 +295,10 @@ typedef enum {
+ typedef struct _KSSTREAM_SEGMENT *PKSSTREAM_SEGMENT;
+ struct IKsPin;
+ 
++#ifdef __CRT_UUID_DECL
++__CRT_UUID_DECL(IKsPin,0xb61178d1,0xa2d9,0x11cf,0x9e,0x53,0x00,0xaa,0x00,0xa2,0x16,0xa1);
++#endif
++
+ #undef INTERFACE
+ #define INTERFACE IKsPin
+ DECLARE_INTERFACE_(IKsPin,IUnknown)
+-- 
+2.3.0
+
