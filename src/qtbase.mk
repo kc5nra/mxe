@@ -41,6 +41,7 @@ define $(PKG)_BUILD
             -no-feature-style-windowsmobile \
             -no-feature-style-s60 \
             -opengl desktop \
+            -qt-libpng \
             -qt-pcre \
             -qt-zlib \
             -no-dbus \
@@ -60,7 +61,6 @@ define $(PKG)_BUILD
             -no-sql-sqlite \
             -no-sql-tds \
             -no-gif \
-            -no-libpng \
             -no-libjpeg \
             -v
 
