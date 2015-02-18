@@ -1,0 +1,25 @@
+diff -ur mirror-mingw-w64-4fd76bd-original/mingw-w64-headers/include/strmif.h mirror-mingw-w64-4fd76bd/mingw-w64-headers/include/strmif.h
+--- mirror-mingw-w64-4fd76bd-original/mingw-w64-headers/include/strmif.h	2015-02-18 01:00:05.000000000 -0600
++++ mirror-mingw-w64-4fd76bd/mingw-w64-headers/include/strmif.h	2015-02-18 13:13:54.000000000 -0600
+@@ -11451,6 +11451,10 @@
+   void __RPC_STUB IAMVideoControl_GetFrameRateList_Stub(IRpcStubBuffer *This,IRpcChannelBuffer *_pRpcChannelBuffer,PRPC_MESSAGE _pRpcMessage,DWORD *_pdwStubPhase);
+ #endif
+ 
++#ifdef __CRT_UUID_DECL
++__CRT_UUID_DECL(IAMCrossbar,0xC6E13380,0x30AC,0x11d0,0xA1,0x8C,0x00,0xA0,0xC9,0x11,0x89,0x56);
++#endif
++
+ #ifndef __IAMCrossbar_INTERFACE_DEFINED__
+ #define __IAMCrossbar_INTERFACE_DEFINED__
+   EXTERN_C const IID IID_IAMCrossbar;
+@@ -13320,6 +13324,10 @@
+   void __RPC_STUB IAMOpenProgress_AbortOperation_Stub(IRpcStubBuffer *This,IRpcChannelBuffer *_pRpcChannelBuffer,PRPC_MESSAGE _pRpcMessage,DWORD *_pdwStubPhase);
+ #endif
+ 
++#ifdef __CRT_UUID_DECL
++__CRT_UUID_DECL(IMpeg2Demultiplexer,0x436eee9c,0x264f,0x4242,0x90,0xe1,0x4e,0x33,0x0c,0x10,0x75,0x12);
++#endif
++
+ #ifndef __IMpeg2Demultiplexer_INTERFACE_DEFINED__
+ #define __IMpeg2Demultiplexer_INTERFACE_DEFINED__
+   EXTERN_C const IID IID_IMpeg2Demultiplexer;
